@@ -25,7 +25,7 @@ jobs:
         uses: josephbmanley/build-godot-action@v1.4.0
         id: godot_build
         with:
-          name: moon-cheeser- ${{ env.EXPORT_SUFFIX }}
+          name: moon-cheeser${{ env.EXPORT_SUFFIX }}
           preset: ${{ matrix.platform }}
           projectDir: source
       - name: Push to Itch
@@ -33,6 +33,6 @@ jobs:
         env:
           CHANNEL: ${{ matrix.platform }}
           ITCH_GAME: moon-cheeser
-          ITCH_USER: pigdev
+          ITCH_USER: josephbmanley
           PACKAGE: ${{ github.workspace }}/${{ steps.godot_build.outputs.build }}
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
